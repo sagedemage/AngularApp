@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { NavigationBarComponent } from './components/navigation_bar/navigation_bar.component';
 
 @NgModule({
   declarations: [
