@@ -38,7 +38,7 @@ class ProgressBar {
 
 	decrease_bar(name: string, value: number) {
 		if (this.password_statuses.get(name) === true) {
-			this.p_bar_width += value;
+			this.p_bar_width -= value;
 			document.getElementById("p-bar")!.style.width = ConvertToWidthText(this.p_bar_width);
 			this.password_statuses.set(name, false);
 		}
@@ -56,8 +56,8 @@ function ProgressChangeOnPattern(password_field: HTMLInputElement, progress_bar:
 	}
 
 	else {
-		// Increase the progress bar if the pattern is met
-		progress_bar.increase_bar(password_status, 25);
+		// Decrease the progress bar if the pattern is not met
+		progress_bar.decrease_bar(password_status, 25);
 
 		document.getElementById(info_id)!.style.color="red";
 		document.getElementById(info_id)!.style.visibility="visible";
@@ -102,14 +102,14 @@ function ProgressForPasswordOnKeyPress(password_field: HTMLInputElement, progres
 	ProgressChangeOnPasswordLength(password_field, progress_bar);
 }
 
-export default function PasswordValidator() {
+export function PasswordValidator() {
 	/* Password Validator */
 	let password_field: HTMLInputElement = (<HTMLInputElement>document.getElementById("password"));
 	let progress_bar = new ProgressBar();
 
 	password_field!.onkeyup = function() {
 		ProgressForPasswordOnKeyPress(password_field, progress_bar);
-	}
+	};
 }
 
 
