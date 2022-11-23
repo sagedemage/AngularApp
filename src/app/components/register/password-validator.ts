@@ -7,7 +7,6 @@ const numeric: RegExp = /[0-9]/g;
 function ConvertToWidthText(current_width: number) {
 	/* Convert width number to text so that that html 
 	 * dom can read the value in the right format  */
-
 	let width_text: string = current_width.toString();
 	let new_width_value = width_text.concat("%");
 
@@ -50,7 +49,7 @@ function ProgressChangeOnPattern(password_field: HTMLInputElement, progress_bar:
 	if (password_field.value.match(pattern)) {
 		// Increase the progress bar if the pattern is met
 		progress_bar.increase_bar(password_status, 25);
-
+		// show green text
 		document.getElementById(info_id)!.style.color="green";
 		document.getElementById(info_id)!.style.visibility="visible";
 	}
@@ -58,7 +57,7 @@ function ProgressChangeOnPattern(password_field: HTMLInputElement, progress_bar:
 	else {
 		// Decrease the progress bar if the pattern is not met
 		progress_bar.decrease_bar(password_status, 25);
-
+		// show red text
 		document.getElementById(info_id)!.style.color="red";
 		document.getElementById(info_id)!.style.visibility="visible";
 	}
@@ -69,7 +68,7 @@ function ProgressChangeOnPasswordLength(password_field: HTMLInputElement, progre
 	if (password_field.value.length >= 8) {
 		// Increase the progress bar if the password length is 8 characters or more
 		progress_bar.increase_bar("good_length", 25);
-
+		// show green text
 		document.getElementById("good_password_length")!.style.color="green";
 		document.getElementById("good_password_length")!.style.visibility="visible";
 	}
@@ -77,11 +76,10 @@ function ProgressChangeOnPasswordLength(password_field: HTMLInputElement, progre
 	else {
 		// Decrease the progress bar if the password length is less than 8 characters
 		progress_bar.decrease_bar("good_length", 25);
-
+		// show red text
 		document.getElementById("good_password_length")!.style.color="red";
 		document.getElementById("good_password_length")!.style.visibility="visible";
 	}
-
 }
 
 function ProgressForPasswordOnKeyPress(password_field: HTMLInputElement, progress_bar: ProgressBar) {
@@ -111,5 +109,4 @@ export function PasswordValidator() {
 		ProgressForPasswordOnKeyPress(password_field, progress_bar);
 	};
 }
-
 
